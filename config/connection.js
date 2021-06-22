@@ -1,16 +1,28 @@
 //Sequelize set up
-var Sequelize = require("sequelize");
+const Sequelize = require("sequelize");
+require('dotenv').config();
 
-//database name, user, password for mysql
-const sequelize = new Sequelize("shopByYou_db", "root", "", {
-  host: "localhost",
-  port: 3306,
-  dialect: "mysql",
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
+// //database name, user, password for mysql
+// const sequelize = new Sequelize("gcspracticedb", "root", "root", {
+//   host: "localhost",
+//   port: 3306,
+//   dialect: "mysql",
+//   pool: {
+//     max: 5,
+//     min: 0,
+//     idle: 10000
+//   }
+// });
+
+const sequelize = new Sequelize(
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
+  {
+    host: 'localhost',
+    port: 3306,
+    dialect: 'mysql'
   }
-});
+);
 
 module.exports = sequelize;

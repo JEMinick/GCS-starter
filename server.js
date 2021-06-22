@@ -2,7 +2,10 @@ const express = require("express")
 const app = express()
 
 // Port
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 3001; // 8080
+
+const sequelize = require('./config/connection');
+
 
 // app
 app.use(express.urlencoded({ extended: true }));
@@ -25,8 +28,13 @@ apiRoutes(app);
 const db = require("./models")
 
 //Syncing sequelize models and then starting express server
-db.sequelize.sync().then(function() {
-    app.listen(PORT, function() {
-      console.log("🌎 App listening on PORT " + PORT);
-    });
-})
+// sequelize.sync().then(function() {
+//     app.listen(PORT, function() {
+//       console.log( "\n🌎 App listening on PORT " + PORT + "\n" );
+//     });
+// })
+
+sequelize.sync({ force: false }).then( () => {
+  app.listen(PORT, () => 
+    console.log( `\nNow listening on PORT: [${PORT}]\n` ));
+});
