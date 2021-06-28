@@ -1,12 +1,19 @@
 <h1>Uploading images with Google Cloud Bucket</h1>
 
-<form id="create-form" enctype="multipart/form-data" method="POST">
+{{!-- <form id="create-form" enctype="multipart/form-data" method="POST">
   <input id="sImgName" type="text" placeholder="Name of photo"/>
   <input id="userImg" name="userImg" type="file"/>
     <div class="ui icon button">
       <i class="attach icon"></i>
     </div>
   <button type="submit">Submit</button>
-</form>
+</form> --}}
+{{!-- <script src="/assets/js/index.js"></script> --}}
 
-<script src="/assets/js/index.js"></script>
+<form class="upload-form">
+  <input type="file" id="upload-file" name="file">
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit">Upload</button>
+  </div>
+</form>
+<script src="/js/uploadImage.js"></script>
